@@ -42,13 +42,24 @@ function cartItemTemplate(item) {
 function removeFromCartHandler(e) {
   const idToRemove = e.target.dataset.id;
   let cart = getLocalStorage("so-cart") || [];
-  // Remove only the first matching item
+  // Remove the desired item
   const index = cart.findIndex(item => String(item.Id) === String(idToRemove));
   if (index !== -1) {
     cart.splice(index, 1);
     localStorage.setItem("so-cart", JSON.stringify(cart));
     renderCartContents();
   }
+}
+
+// handle emptying the cart
+function emptyCartHandler() {
+  localStorage.removeItem("so-cart");
+  renderCartContents();
+}
+// event listener for emptying the cart
+const emptyCartBtn = document.getElementById("emptyCart");
+if (emptyCartBtn) {
+  emptyCartBtn.addEventListener("click", emptyCartHandler);
 }
 
 renderCartContents();
