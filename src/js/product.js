@@ -17,15 +17,15 @@ function addProductToCart(product) {
 // add to cart button event handler
 async function addToCartHandler(e) {
   try {
-    console.log("Add to Cart button clicked", e.target.dataset.id);
+    // Add to Cart button clicked
     const product = await dataSource.findProductById(e.target.dataset.id);
 
     if (!product) {
-      console.error("Product not found for ID:", e.target.dataset.id);
+      // Product not found for ID
       return;
     }
 
-    console.log("Product found:", product);
+    // Product found
     addProductToCart(product);
 
     // Display success message
@@ -40,7 +40,7 @@ async function addToCartHandler(e) {
       messageDiv.remove();
     }, 3000);
   } catch (error) {
-    console.error("Error adding product to cart:", error);
+    // Error adding product to cart
   }
 }
 
