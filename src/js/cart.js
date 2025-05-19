@@ -11,11 +11,17 @@ function renderCartContents() {
 
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  // Add event listeners to all remove buttons
+  document.querySelectorAll('.remove-from-cart').forEach(btn => {
+    btn.addEventListener('click', removeFromCartHandler);
+  });
 }
 
 function cartItemTemplate(item) {
   const newItem = `
   <li class="cart-card divider">
+    <span class="remove-from-cart" data-id="${item.Id}" style="cursor:pointer; color:red; float:right; font-weight:bold;">&times;</span>
     <a href="#" class="cart-card__image">
       <img
         src="${item.Image}"
@@ -31,6 +37,18 @@ function cartItemTemplate(item) {
   </li>`;
 
   return newItem;
+}
+
+function removeFromCartHandler(e) {
+  const idToRemove = e.target.dataset.id;
+  let cart = getLocalStorage("so-cart") || [];
+  // Remove only the first matching item
+  const index = cart.findIndex(item => String(item.Id) === String(idToRemove));
+  if (index !== -1) {
+    cart.splice(index, 1);
+    localStorage.setItem("so-cart", JSON.stringify(cart));
+    renderCartContents();
+  }
 }
 
 renderCartContents();
