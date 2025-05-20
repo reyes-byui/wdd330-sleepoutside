@@ -18,7 +18,20 @@ function renderCartContents() {
   });
 }
 
+function formatPrice(price) {
+  return `$${price.toFixed(2)}`;
+}
+
 function cartItemTemplate(item) {
+  let priceHtml = '';
+  if (item.FinalPrice < item.SuggestedRetailPrice) {
+    const percent = Math.round(
+      ((item.SuggestedRetailPrice - item.FinalPrice) / item.SuggestedRetailPrice) * 100
+    );
+    priceHtml = `<span class="discount-indicator">-${percent}% OFF</span> <span class="old-price">${formatPrice(item.SuggestedRetailPrice)}</span> <span class="new-price">${formatPrice(item.FinalPrice)}</span>`;
+  } else {
+    priceHtml = formatPrice(item.FinalPrice);
+  }
   const newItem = `
   <li class="cart-card divider">
     <span class="remove-from-cart" data-id="${item.Id}" style="cursor:pointer; color:red; float:right; font-weight:bold;">&times;</span>
@@ -33,7 +46,7 @@ function cartItemTemplate(item) {
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
     <p class="cart-card__quantity">qty: 1</p>
-    <p class="cart-card__price">$${item.FinalPrice}</p>
+    <p class="cart-card__price">${priceHtml}</p>
   </li>`;
 
   return newItem;
