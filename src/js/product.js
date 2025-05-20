@@ -17,15 +17,15 @@ function addProductToCart(product) {
 // add to cart button event handler
 async function addToCartHandler(e) {
   try {
-    // Add to Cart button clicked
+    console.log("Add to Cart button clicked", e.target.dataset.id);
     const product = await dataSource.findProductById(e.target.dataset.id);
 
     if (!product) {
-      // Product not found for ID
+      console.error("Product not found for ID:", e.target.dataset.id);
       return;
     }
 
-    // Product found
+    console.log("Product found:", product);
     addProductToCart(product);
 
     // Display success message
@@ -40,7 +40,7 @@ async function addToCartHandler(e) {
       messageDiv.remove();
     }, 3000);
   } catch (error) {
-    // Error adding product to cart
+    console.error("Error adding product to cart:", error);
   }
 }
 
@@ -48,3 +48,57 @@ async function addToCartHandler(e) {
 document
   .getElementById("addToCart")
   .addEventListener("click", addToCartHandler);
+
+function formatPrice(price) {
+  return `$${price.toFixed(2)}`;
+}
+
+function createDiscountBadge(percent) {
+  const badge = document.createElement("span");
+  badge.className = "discount-indicator";
+  badge.textContent = `-${percent}% OFF`;
+  return badge;
+}
+
+function updateProductDetail(product) {
+  const priceElem = document.querySelector(".product-card__price");
+  if (!priceElem || !product) return;
+  if (product.FinalPrice < product.SuggestedRetailPrice) {
+    const percent = Math.round(
+      ((product.SuggestedRetailPrice - product.FinalPrice) /
+        product.SuggestedRetailPrice) *
+        100
+    );
+    // Add badge
+    priceElem.parentElement.insertBefore(
+      createDiscountBadge(percent),
+      priceElem
+    );
+    // Show old price with strikethrough
+    const oldPrice = document.createElement("span");
+    oldPrice.className = "old-price";
+    oldPrice.textContent = formatPrice(product.SuggestedRetailPrice);
+    priceElem.innerHTML = `<span class="new-price">${formatPrice(
+      product.FinalPrice
+    )}</span>`;
+    priceElem.insertBefore(oldPrice, priceElem.firstChild);
+  } else {
+    priceElem.textContent = formatPrice(product.FinalPrice);
+  }
+}
+
+// If on a product detail page, try to get product data and update price display
+if (document.querySelector('.product-detail')) {
+  // Extract product id from button or data attribute
+  const addToCartBtn = document.getElementById('addToCart');
+  let productId = addToCartBtn ? addToCartBtn.dataset.id : null;
+  if (productId) {
+    import('./ProductData.mjs').then(({ default: ProductData }) => {
+      const dataSource = new ProductData('tents');
+      dataSource.getData().then(products => {
+        const product = products.find(p => p.Id === productId || p.Id === productId.toLowerCase());
+        updateProductDetail(product);
+      });
+    });
+  }
+}
