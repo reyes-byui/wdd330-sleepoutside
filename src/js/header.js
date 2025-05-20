@@ -2,12 +2,14 @@
 function getHeaderPath() {
   // Get the current path and count the number of subdirectories
   const path = window.location.pathname;
-  const depth = path.replace(/^\/+|\/+$|index.html$/g, '').split('/').length - 1;
+  const depth = path.replace(/^\/|\/$|index.html$/g, '').split('/').length - 1;
   let prefix = '';
   for (let i = 0; i < depth; i++) {
     prefix += '../';
   }
-  return prefix + 'partials/header.html';
+  const headerPath = prefix + 'partials/header.html';
+  console.log('Fetching header from:', headerPath);
+  return headerPath;
 }
 
 fetch(getHeaderPath())
