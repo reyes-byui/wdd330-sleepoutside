@@ -3,13 +3,24 @@ import { getLocalStorage } from "./utils.mjs";
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
 
-  if (cartItems.length === 0) {
+  // Group items by Id and count quantity
+  const grouped = {};
+  cartItems.forEach((item) => {
+    if (!grouped[item.Id]) {
+      grouped[item.Id] = { ...item, quantity: 1 };
+    } else {
+      grouped[item.Id].quantity += 1;
+    }
+  });
+  const groupedItems = Object.values(grouped);
+
+  if (groupedItems.length === 0) {
     document.querySelector(".product-list").innerHTML =
       "<p>Your cart is empty.</p>";
     return;
   }
 
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+  const htmlItems = groupedItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
   // Add event listeners to all remove buttons
@@ -45,7 +56,7 @@ function cartItemTemplate(item) {
         <h2 class="card__name">${item.Name}</h2>
       </a>
       <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-      <p class="cart-card__quantity">qty: 1</p>
+      <p class="cart-card__quantity">qty: ${item.quantity || 1}</p>
       <p class="cart-card__price">${priceHtml}</p>
     </li>`;
 
