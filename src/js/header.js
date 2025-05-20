@@ -1,18 +1,5 @@
 // Dynamically load the header partial into the #header div
-function getHeaderPath() {
-  // Get the current path and count the number of subdirectories
-  const path = window.location.pathname;
-  const depth = path.replace(/^\/|\/$|index.html$/g, '').split('/').length - 1;
-  let prefix = '';
-  for (let i = 0; i < depth; i++) {
-    prefix += '../';
-  }
-  const headerPath = prefix + 'partials/header.html';
-  console.log('Fetching header from:', headerPath);
-  return headerPath;
-}
-
-fetch(getHeaderPath())
+fetch('/partials/header.html')
   .then(response => {
     if (!response.ok) {
       throw new Error('Header partial not found: ' + response.status);
