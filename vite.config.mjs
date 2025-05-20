@@ -9,7 +9,8 @@ export default defineConfig({
     targets: [
       { src: 'json', dest: '.' },
       { src: 'partials', dest: '.' },
-      { src: 'js/header.js', dest: 'js' } // <-- add this line
+      { src: 'js/header.js', dest: 'js' },
+      { src: 'images', dest: '.' },
     ]
   })
   ],
