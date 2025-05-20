@@ -1,14 +1,5 @@
 // Dynamically load the header partial into the #header div
-function getHeaderPath() {
-  // If running from a subfolder, use relative path
-  const path = window.location.pathname;
-  if (path.includes('/cart/') || path.includes('/checkout/') || path.includes('/product_pages/')) {
-    return '../partials/header.html';
-  }
-  return 'partials/header.html';
-}
-
-fetch(getHeaderPath())
+fetch('/partials/header.html')
   .then(response => response.text())
   .then(data => {
     document.getElementById('header').innerHTML = data;
