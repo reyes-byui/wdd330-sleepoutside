@@ -1,5 +1,15 @@
 // Dynamically load the header partial into the #header div
-fetch('/partials/header.html')
+function getHeaderPath() {
+  const path = window.location.pathname;
+  const depth = path.replace(/^\/+|\/+$|index.html$/g, '').split('/').length - 1;
+  let prefix = '';
+  for (let i = 0; i < depth; i++) {
+    prefix += '../';
+  }
+  return prefix + 'partials/header.html';
+}
+
+fetch(getHeaderPath())
   .then(response => response.text())
   .then(data => {
     document.getElementById('header').innerHTML = data;
