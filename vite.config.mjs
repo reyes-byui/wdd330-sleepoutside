@@ -10,6 +10,10 @@ export default defineConfig({
         {
           src: 'json',
           dest: '.'
+        },
+        {
+          src: 'partials',
+          dest: '.'
         }
       ]
     })
