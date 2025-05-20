@@ -23,7 +23,8 @@ export default class Alert {
         main.prepend(section);
       }
     } catch (e) {
-      // Optionally log error
+    // Optionally log error
+    console.error("Failed to load alerts:", e);
     }
   }
 }
