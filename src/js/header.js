@@ -1,5 +1,6 @@
 // Dynamically load the header partial into the #header div
 function getHeaderPath() {
+  // Get the current path and count the number of subdirectories
   const path = window.location.pathname;
   const depth = path.replace(/^\/+|\/+$|index.html$/g, '').split('/').length - 1;
   let prefix = '';
@@ -10,10 +11,18 @@ function getHeaderPath() {
 }
 
 fetch(getHeaderPath())
-  .then(response => response.text())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Header partial not found: ' + response.status);
+    }
+    return response.text();
+  })
   .then(data => {
     document.getElementById('header').innerHTML = data;
     updateCartCount();
+  })
+  .catch(error => {
+    console.error('Error loading header:', error);
   });
 
 function updateCartCount() {
