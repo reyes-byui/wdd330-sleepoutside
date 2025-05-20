@@ -1,5 +1,14 @@
 // Dynamically load the header partial into the #header div
-fetch('/partials/header.html')
+function getHeaderPath() {
+  // If running from a subfolder, use relative path
+  const path = window.location.pathname;
+  if (path.includes('/cart/') || path.includes('/checkout/') || path.includes('/product_pages/')) {
+    return '../partials/header.html';
+  }
+  return 'partials/header.html';
+}
+
+fetch(getHeaderPath())
   .then(response => response.text())
   .then(data => {
     document.getElementById('header').innerHTML = data;
@@ -7,7 +16,6 @@ fetch('/partials/header.html')
   });
 
 function updateCartCount() {
-  // Example: cart stored as array in localStorage under 'so-cart'
   let cart = [];
   try {
     cart = JSON.parse(localStorage.getItem('so-cart')) || [];
