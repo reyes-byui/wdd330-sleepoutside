@@ -331,8 +331,10 @@ footer {
   font-size: 1.1rem;
   letter-spacing: 0.02em;
   animation: alert-marquee 15s linear infinite;
-  font-size:large;
-  font-weight: bold;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+  overflow: visible;
 }
 
 @keyframes alert-marquee {
