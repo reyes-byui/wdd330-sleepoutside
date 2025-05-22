@@ -14,6 +14,22 @@ fetch('/partials/header.html')
     console.error('Error loading header:', error);
   });
 
+// Dynamically load the header partial into the #header div
+fetch('/partials/footer.html')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Footer partial not found: ' + response.status);
+    }
+    return response.text();
+  })
+  .then(data => {
+    document.getElementById('footer').innerHTML = data;
+    updateCartCount();
+  })
+  .catch(error => {
+    console.error('Error loading footer:', error);
+  });
+
 function updateCartCount() {
   let cart = [];
   try {
