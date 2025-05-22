@@ -14,10 +14,6 @@ fetch('/partials/header.html')
     console.error('Error loading header:', error);
   });
 
-<<<<<<< HEAD
-=======
-// Dynamically load the header partial into the #header div
->>>>>>> eb466e1780009ff964077ae4ed25db82afbf34db
 fetch('/partials/footer.html')
   .then(response => {
     if (!response.ok) {
