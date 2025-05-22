@@ -1,5 +1,6 @@
 // Adds a visual discount indicator to product cards on the homepage if FinalPrice < SuggestedRetailPrice
 import ProductData from "./ProductData.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
 const dataSource = new ProductData("tents");
 
@@ -50,4 +51,5 @@ function updateProductCards(products) {
   });
 }
 
+loadHeaderFooter();
 dataSource.getData().then(updateProductCards);
