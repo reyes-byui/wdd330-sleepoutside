@@ -6,15 +6,16 @@ export default defineConfig({
   root: "src/",
   plugins: [
     viteStaticCopy({
-    targets: [
-      { src: 'json', dest: '.' },
-      { src: 'public/partials', dest: 'partials' },
-      { src: 'js/header.js', dest: 'js' },
-      { src: 'images', dest: '.' },
-      { src: 'product_pages/*.html', dest: 'product_pages' }, 
-      { src: 'public/partials/*', dest: 'partials' }
-    ]
-  })
+      targets: [
+        { src: 'json', dest: '.' },
+        { src: 'public/partials', dest: 'partials' },
+        { src: 'js/header.js', dest: 'js' },
+        { src: 'images', dest: '.' },
+        { src: 'product_pages/*.html', dest: 'product_pages' }, 
+        { src: 'public/partials/*', dest: 'partials' },
+        { src: 'css/style.css', dest: 'css' },
+      ]
+    })
   ],
   build: {
     outDir: "../dist",
