@@ -111,7 +111,3 @@ async function loadProductsForCategory() {
 if (document.getElementById('product-list')) {
   loadProductsForCategory();
 }
-
-export function getTentsData() {
-  return dataSource.getData();
-}
