@@ -8,7 +8,6 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         { src: 'json', dest: '.' },
-        { src: 'public/partials', dest: 'partials' },
         { src: 'js/*.{js,mjs}', dest: 'js' },
         { src: 'images', dest: '.' },
         { src: 'product_pages/*.html', dest: 'product_pages' }, 

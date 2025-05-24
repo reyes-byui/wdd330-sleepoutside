@@ -1,0 +1,142 @@
+[
+  {
+    "Id": "H001",
+    "IsClearance": false,
+    "IsNew": false,
+    "Url": "/api/1.0/product/h001/",
+    "WebUrl": "https://www.sierra.com/product/bounce/h001/?filterString=s~hammocks%2F",
+    "AffiliateWebUrl": "https://www.sierra.com/product/bounce/h001/?filterString=s~hammocks%2F",
+    "Reviews": {
+      "ReviewsUrl": "/api/1.0/reviewsbyproduct/h001/",
+      "ReviewCount": 12,
+      "AverageRating": 4.8
+    },
+    "NameWithoutBrand": "DoubleNest Hammock",
+    "Name": "ENO DoubleNest Hammock",
+    "IsFamousBrand": true,
+    "Images": {
+      "PrimarySmall": "https://i.stpost.com/eno-doublenest-hammock-in-navy-forest~p~h001_01~80.jpg",
+      "PrimaryMedium": "https://i.stpost.com/eno-doublenest-hammock-in-navy-forest~p~h001_01~160.jpg",
+      "PrimaryLarge": "https://i.stpost.com/eno-doublenest-hammock-in-navy-forest~p~h001_01~320.jpg",
+      "PrimaryExtraLarge": "https://i.stpost.com/eno-doublenest-hammock-in-navy-forest~p~h001_01~600.jpg",
+      "ExtraImages": [
+        {
+          "Title": "Alternate View",
+          "Src": "https://i.stpost.com/eno-doublenest-hammock~a~h001_2~600.2.jpg"
+        }
+      ]
+    },
+    "SizesAvailable": {},
+    "Colors": [
+      {
+        "ColorCode": "01",
+        "ColorName": "Navy/Forest"
+      },
+      {
+        "ColorCode": "02",
+        "ColorName": "Olive/Khaki"
+      }
+    ],
+    "DescriptionHtmlSimple": "Spacious, durable, and lightweight hammock perfect for camping or backyard lounging.",
+    "SuggestedRetailPrice": 74.95,
+    "Brand": {
+      "Id": "ENO",
+      "LogoSrc": "../images/logos/hammocks.svg",
+      "Name": "ENO"
+    },
+    "ListPrice": 69.95,
+    "FinalPrice": 69.95
+  },
+  {
+    "Id": "H002",
+    "IsClearance": false,
+    "IsNew": false,
+    "Url": "/api/1.0/product/h002/",
+    "WebUrl": "https://www.sierra.com/product/bounce/h002/?filterString=s~hammocks%2F",
+    "AffiliateWebUrl": "https://www.sierra.com/product/bounce/h002/?filterString=s~hammocks%2F",
+    "Reviews": {
+      "ReviewsUrl": "/api/1.0/reviewsbyproduct/h002/",
+      "ReviewCount": 8,
+      "AverageRating": 4.6
+    },
+    "NameWithoutBrand": "Skeeter Beeter Pro Hammock",
+    "Name": "Grand Trunk Skeeter Beeter Pro Hammock",
+    "IsFamousBrand": true,
+    "Images": {
+      "PrimarySmall": "https://i.stpost.com/grand-trunk-skeeter-beeter-pro-hammock-in-green-grey~p~h002_01~80.jpg",
+      "PrimaryMedium": "https://i.stpost.com/grand-trunk-skeeter-beeter-pro-hammock-in-green-grey~p~h002_01~160.jpg",
+      "PrimaryLarge": "https://i.stpost.com/grand-trunk-skeeter-beeter-pro-hammock-in-green-grey~p~h002_01~320.jpg",
+      "PrimaryExtraLarge": "https://i.stpost.com/grand-trunk-skeeter-beeter-pro-hammock-in-green-grey~p~h002_01~600.jpg",
+      "ExtraImages": [
+        {
+          "Title": "Alternate View",
+          "Src": "https://i.stpost.com/grand-trunk-skeeter-beeter-pro-hammock~a~h002_2~600.2.jpg"
+        }
+      ]
+    },
+    "SizesAvailable": {},
+    "Colors": [
+      {
+        "ColorCode": "01",
+        "ColorName": "Green/Grey"
+      }
+    ],
+    "DescriptionHtmlSimple": "Bug-proof hammock with integrated mosquito net for comfortable outdoor sleeping.",
+    "SuggestedRetailPrice": 94.95,
+    "Brand": {
+      "Id": "GT",
+      "LogoSrc": "../images/logos/hammocks.svg",
+      "Name": "Grand Trunk"
+    },
+    "ListPrice": 89.95,
+    "FinalPrice": 89.95
+  },
+  {
+    "Id": "H003",
+    "IsClearance": false,
+    "IsNew": false,
+    "Url": "/api/1.0/product/h003/",
+    "WebUrl": "https://www.sierra.com/product/bounce/h003/?filterString=s~hammocks%2F",
+    "AffiliateWebUrl": "https://www.sierra.com/product/bounce/h003/?filterString=s~hammocks%2F",
+    "Reviews": {
+      "ReviewsUrl": "/api/1.0/reviewsbyproduct/h003/",
+      "ReviewCount": 5,
+      "AverageRating": 4.9
+    },
+    "NameWithoutBrand": "Roo Single Hammock",
+    "Name": "Kammok Roo Single Hammock",
+    "IsFamousBrand": true,
+    "Images": {
+      "PrimarySmall": "https://i.stpost.com/kammok-roo-single-hammock-in-ember-orange~p~h003_01~80.jpg",
+      "PrimaryMedium": "https://i.stpost.com/kammok-roo-single-hammock-in-ember-orange~p~h003_01~160.jpg",
+      "PrimaryLarge": "https://i.stpost.com/kammok-roo-single-hammock-in-ember-orange~p~h003_01~320.jpg",
+      "PrimaryExtraLarge": "https://i.stpost.com/kammok-roo-single-hammock-in-ember-orange~p~h003_01~600.jpg",
+      "ExtraImages": [
+        {
+          "Title": "Alternate View",
+          "Src": "https://i.stpost.com/kammok-roo-single-hammock~a~h003_2~600.2.jpg"
+        }
+      ]
+    },
+    "SizesAvailable": {},
+    "Colors": [
+      {
+        "ColorCode": "01",
+        "ColorName": "Ember Orange"
+      },
+      {
+        "ColorCode": "02",
+        "ColorName": "Midnight Blue"
+      }
+    ],
+    "DescriptionHtmlSimple": "Ultra-strong, soft, and packable hammock for solo adventurers.",
+    "SuggestedRetailPrice": 79.00,
+    "Brand": {
+      "Id": "KAMMOK",
+      "LogoSrc": "../images/logos/hammocks.svg",
+      "Name": "Kammok"
+    },
+    "ListPrice": 74.00,
+    "FinalPrice": 74.00
+  }
+]
