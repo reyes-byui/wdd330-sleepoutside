@@ -36,9 +36,14 @@ function updateCartCount() {
   } catch (e) {
     cart = [];
   }
-  const count = cart.length;
+  // Always count the number of items in the cart (flat array)
+  const count = Array.isArray(cart) ? cart.length : 0;
   const countElem = document.getElementById('cart-count');
   if (countElem) {
     countElem.textContent = count > 0 ? count : '';
+    countElem.style.display = 'inline'; // Always show the element
+  } else {
+    // Try again after a short delay in case the header is loaded asynchronously
+    setTimeout(updateCartCount, 100);
   }
 }
