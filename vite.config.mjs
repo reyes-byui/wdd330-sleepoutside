@@ -13,6 +13,8 @@ export default defineConfig({
         { src: 'product_pages/*.html', dest: 'product_pages' }, 
         { src: 'public/partials/*', dest: 'partials' },
         { src: 'css/style.css', dest: 'css' },
+        { src: 'index.html', dest: '.' }, // Ensure index.html is copied to dist/
+        { src: 'cart/index.html', dest: 'cart' }, // Ensure cart/index.html is copied to dist/
       ]
     })
   ],
