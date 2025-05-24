@@ -27,6 +27,30 @@ function renderCartContents() {
   document.querySelectorAll('.remove-from-cart').forEach(btn => {
     btn.addEventListener('click', removeFromCartHandler);
   });
+
+  // Calculate totals
+  let originalTotal = 0;
+  let discountedTotal = 0;
+  groupedItems.forEach(item => {
+    const qty = item.quantity || 1;
+    const orig = item.SuggestedRetailPrice || item.ListPrice || item.FinalPrice || 0;
+    const disc = item.FinalPrice || item.ListPrice || 0;
+    originalTotal += orig * qty;
+    discountedTotal += disc * qty;
+  });
+  const discountAmount = originalTotal - discountedTotal;
+
+  // Display totals
+  const totalsDiv = document.getElementById('cart-totals');
+  if (totalsDiv) {
+    totalsDiv.innerHTML = `
+      <div class="cart-footer">
+        <p class="cart-total">Total: <span class="old-price">${formatPrice(originalTotal)}</span></p>
+        <p class="cart-total">Discount: <span class="discount-indicator">-${formatPrice(discountAmount)}</span></p>
+        <p class="cart-total">To Pay: <span class="new-price">${formatPrice(discountedTotal)}</span></p>
+      </div>
+    `;
+  }
 }
 
 function formatPrice(price) {
