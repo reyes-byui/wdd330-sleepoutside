@@ -136,25 +136,6 @@ button {
   fill: gray;
 }
 
-.cart-count {
-  color: #fff;
-  background: #c00;
-  border-radius: 50%;
-  font-size: 0.9em;
-  font-weight: bold;
-  padding: 0 0.45em;
-  vertical-align: super;
-  position: absolute;
-  right: -10px;
-  top: -10px;
-  min-width: 1.2em;
-  text-align: center;
-  z-index: 20;
-  box-shadow: 0 0 2px #333;
-  transition: opacity 0.2s;
-  display: inline;
-}
-
 /* End cart icon styles */
 
 .mission {
