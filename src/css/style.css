@@ -384,7 +384,13 @@ footer {
 }
 .cart-link {
   text-decoration: none;
-  color: inherit;
+}
+.checkout-link {
+  text-decoration: none;
+  color: #252525;
+}
+.checkout-link:hover {
+  color: var(--secondary-color);
 }
 @keyframes alert-marquee {
   100% {
