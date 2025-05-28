@@ -392,6 +392,11 @@ footer {
 .checkout-link:hover {
   color: var(--secondary-color);
 }
+.checkout-link.checkout-btn {
+  display: block;
+  margin: 1em 0 1em auto;
+  width: fit-content;
+}
 .checkout-section {
   display: flex;
   flex-direction: row;
@@ -402,9 +407,7 @@ footer {
 .checkout-section input {
   margin-right: 0;
 }
-.checkout-btn {
-  margin : 1em 0;
-}
+
 .checkout-form .form-group {
   display: flex;
   align-items: center;
