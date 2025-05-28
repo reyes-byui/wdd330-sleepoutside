@@ -58,6 +58,7 @@
             <label for="cvv">Security Code</label>
             <input type="text" id="cvv" name="cvv" maxlength="4" required />
           </div>
+          <button type="submit" class="checkout-btn">Checkout</button>
         </form>
         <aside class="order-summary">
           <h3>Order Summary</h3>
@@ -74,13 +75,12 @@
           </table>
           <ul>
             <li>Subtotal: <span id="summary-subtotal">$0.00</span></li>
-            <li>Tax (10%): <span id="summary-tax">$0.00</span></li>
+            <li>Tax (6%): <span id="summary-tax">$0.00</span></li>
             <li>Shipping: <span id="summary-shipping">$0.00</span></li>
             <li>Discount: <span id="summary-discount">$0.00</span></li>
             <li><strong>Order Total: <span id="summary-total">$0.00</span></strong></li>
           </ul>
         </aside>
-        <button type="submit" class="checkout-btn">Checkout</button>
       </section>
     </main>
     <div id="footer"></div>

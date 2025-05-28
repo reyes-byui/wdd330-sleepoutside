@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     const discountAmount = originalTotal - discountedTotal;
     // Tax and shipping
-    const tax = +(discountedTotal * 0.10).toFixed(2);
-    const shipping = +(discountedTotal * 0.10).toFixed(2);
+    const tax = +(discountedTotal * 0.06).toFixed(2); // 6% tax
+    const shipping = +(discountedTotal * 0.04).toFixed(2);
     const total = +(discountedTotal + tax + shipping).toFixed(2);
     if (document.getElementById('summary-subtotal'))
       document.getElementById('summary-subtotal').textContent = `$${originalTotal.toFixed(2)}`;
