@@ -1,4 +1,5 @@
 import { getLocalStorage } from "./utils.mjs";
+import { triggerCartCountUpdate } from "./header.js";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
@@ -43,14 +44,20 @@ function renderCartContents() {
   // Display totals
   const totalsDiv = document.getElementById('cart-totals');
   if (totalsDiv) {
+    // Calculate total number of items in the cart
+    const totalItems = groupedItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
     totalsDiv.innerHTML = `
       <div class="cart-footer">
+        <p class="cart-total">Total items: <span class="cart-items-count">${totalItems}</span></p>
         <p class="cart-total">Total: <span class="old-price">${formatPrice(originalTotal)}</span></p>
         <p class="cart-total">Discount: <span class="discount-indicator">-${formatPrice(discountAmount)}</span></p>
         <p class="cart-total">To Pay: <span class="new-price">${formatPrice(discountedTotal)}</span></p>
       </div>
     `;
   }
+
+  // At the end of renderCartContents, update the cart count in the header
+  triggerCartCountUpdate();
 }
 
 function formatPrice(price) {
@@ -97,6 +104,7 @@ function removeFromCartHandler(e) {
     cart.splice(index, 1);
     localStorage.setItem("so-cart", JSON.stringify(cart));
     renderCartContents();
+    triggerCartCountUpdate(); // Ensure header updates after remove
   }
 }
 
@@ -104,6 +112,7 @@ function removeFromCartHandler(e) {
 function emptyCartHandler() {
   localStorage.removeItem("so-cart");
   renderCartContents();
+  triggerCartCountUpdate(); // Ensure header updates after empty
 }
 // event listener for emptying the cart
 const emptyCartBtn = document.getElementById("emptyCart");

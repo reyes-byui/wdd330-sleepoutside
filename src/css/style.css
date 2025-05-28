@@ -369,7 +369,23 @@ footer {
   width: 100%;
   overflow: visible;
 }
-
+/* cart count */
+.cart-count {
+  background: #c00;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 0.9em;
+  margin-left: 4px;
+  vertical-align: middle;
+  font-weight: bold;
+  position: relative;
+  top: -8px;
+}
+.cart-link {
+  text-decoration: none;
+  color: inherit;
+}
 @keyframes alert-marquee {
   100% {
     transform: translateX(-100%);
