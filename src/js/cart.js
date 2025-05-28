@@ -18,6 +18,11 @@ function renderCartContents() {
   if (groupedItems.length === 0) {
     document.querySelector(".product-list").innerHTML =
       "<p>Your cart is empty.</p>";
+    // Also clear the cart-totals div when cart is empty
+    const totalsDiv = document.getElementById('cart-totals');
+    if (totalsDiv) {
+      totalsDiv.innerHTML = '';
+    }
     return;
   }
 
