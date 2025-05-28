@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Order summary logic
   function updateOrderSummary() {
     let cart = JSON.parse(localStorage.getItem('so-cart')) || [];
+    console.log('Cart data on checkout page:', cart);
     // Group items by Id and count quantity
     const grouped = {};
     cart.forEach(item => {
