@@ -43,3 +43,17 @@ window.addEventListener('storage', function(e) {
 export function triggerCartCountUpdate() {
   updateCartCount();
 }
+
+// Intercept Checkout button click if cart is empty (after header loads)
+export function interceptCheckoutIfCartEmpty() {
+  document.addEventListener('click', function(e) {
+    // Only handle left click, not keyboard or right click
+    if (e.target && e.target.classList.contains('checkout-link')) {
+      let cart = JSON.parse(localStorage.getItem('so-cart')) || [];
+      if (cart.length === 0) {
+        e.preventDefault();
+        window.alert('Cart is Empty.');
+      }
+    }
+  }, true);
+}
