@@ -1,4 +1,5 @@
 import ProductData from "./ProductData.mjs";
+import { triggerCartCountUpdate } from "../js/header.js";
 
 function getQueryParam(param) {
   const params = new URLSearchParams(window.location.search);
@@ -67,6 +68,7 @@ function renderProductDetail(product) {
     messageDiv.style.marginTop = '10px';
     e.target.parentElement.appendChild(messageDiv);
     setTimeout(() => { messageDiv.remove(); }, 3000);
+    triggerCartCountUpdate(); // Update cart count in header after add
   });
 }
 

@@ -1,32 +1,45 @@
-// Dynamically load the header partial into the #header div
-fetch('/partials/header.html')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Header partial not found: ' + response.status);
+// Only export updateCartCount, no fetch logic
+export function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem('so-cart')) || [];
+  const grouped = {};
+  for (const item of cart) {
+    if (!grouped[item.Id]) {
+      grouped[item.Id] = { ...item, quantity: 1 };
+    } else {
+      grouped[item.Id].quantity += 1;
     }
-    return response.text();
-  })
-  .then(data => {
-    document.getElementById('header').innerHTML = data;
-    // cart-count removed
-  })
-  .catch(error => {
-    console.error('Error loading header:', error);
-  });
-
-fetch('/partials/footer.html')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Footer partial not found: ' + response.status);
+  }
+  const groupedItems = Object.values(grouped);
+  const totalItems = groupedItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
+  const header = document.getElementById('header');
+  if (header) {
+    const cartLink = header.querySelector('.cart-link');
+    if (cartLink) {
+      let countSpan = cartLink.querySelector('.cart-count');
+      if (!countSpan) {
+        countSpan = document.createElement('span');
+        countSpan.className = 'cart-count';
+        countSpan.style.marginLeft = '8px';
+        cartLink.appendChild(countSpan);
+      }
+      countSpan.textContent = totalItems;
+      const cartDiv = cartLink.parentNode;
+      if (cartDiv) {
+        const oldText = cartDiv.querySelector('.cart-items-text');
+        if (oldText) oldText.remove();
+      }
     }
-    return response.text();
-  })
-  .then(data => {
-    document.getElementById('footer').innerHTML = data;
-    // cart-count removed
-  })
-  .catch(error => {
-    console.error('Error loading footer:', error);
-  });
+  }
+}
 
-// cart-count related code removed
+// Listen for cart changes in this tab
+window.addEventListener('storage', function(e) {
+  if (e.key === 'so-cart') {
+    updateCartCount();
+  }
+});
+
+// Listen for cart changes in this tab (after add/remove)
+export function triggerCartCountUpdate() {
+  updateCartCount();
+}
