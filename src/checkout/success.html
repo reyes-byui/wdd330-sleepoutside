@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Home</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+<body>
+    <div id="header"></div>
+    <main>
+    <section class="success-message">
+      <h1>Thank you for your order!</h1>
+      <p>Your order was placed successfully. We appreciate your business and hope you enjoy your products!</p>
+      <a href="/index.html">Return to Home</a>
+    </section>
+    </main>
+    <div id="footer"></div>
+    <script src="js/main.js" type="module"></script>
+    <script type="module">
+      import Alert from './js/Alert.js';
+      new Alert('./json/alerts.json').showAlerts();
+    </script>
+    <script src="/js/header.js" type="module"></script>
+    <script type="module" src="js/home.js"></script>
+</body>
+</html>

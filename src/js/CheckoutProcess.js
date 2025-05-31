@@ -1,4 +1,5 @@
 import ExternalServices from "./ExternalServices.mjs";
+import { alertMessage } from "./utils.mjs";
 
 export default class CheckoutProcess {
   constructor() {
@@ -48,6 +49,18 @@ export default class CheckoutProcess {
     order.tax = tax;
     // Send to server
     const service = new ExternalServices();
-    return await service.checkout(order);
+    try {
+      await service.checkout(order);
+      // Success: clear cart and redirect
+      localStorage.removeItem(this.cartKey);
+      window.location.href = '/src/checkout/success.html';
+    } catch (err) {
+      // Failure: show error with alertMessage
+      if (err.name === 'servicesError' && err.message) {
+        alertMessage(typeof err.message === 'object' && err.message.message ? err.message.message : JSON.stringify(err.message));
+      } else {
+        alertMessage('Order failed. Please try again.');
+      }
+    }
   }
 }
