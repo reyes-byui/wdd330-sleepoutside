@@ -35,7 +35,28 @@ header {
   justify-content: space-between;
   padding: 0.5rem;
 }
-
+.product-search-form {
+  display:flex;
+  flex-direction: row;
+  padding: 1em;
+  gap: 1em;
+}
+.product-search-form button {
+  padding:0.5rem 1rem;
+  border-radius:4px;
+  border:none;
+  background:#00796b;
+  color:#fff;
+  font-size: 10pt;
+}
+.product-search-form input {
+  width: auto;
+}
+#product-search-input {
+  padding:0.5rem;
+  border-radius:4px;
+  border:1px solid #ccc;
+}
 p {
   padding: 0.75rem;
 }
