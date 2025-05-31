@@ -1,4 +1,3 @@
-// Only export updateCartCount, no fetch logic
 export function updateCartCount() {
   let cart = JSON.parse(localStorage.getItem('so-cart')) || [];
   const grouped = {};
@@ -32,22 +31,18 @@ export function updateCartCount() {
   }
 }
 
-// Listen for cart changes in this tab
 window.addEventListener('storage', function(e) {
   if (e.key === 'so-cart') {
     updateCartCount();
   }
 });
 
-// Listen for cart changes in this tab (after add/remove)
 export function triggerCartCountUpdate() {
   updateCartCount();
 }
 
-// Intercept Checkout button click if cart is empty (after header loads)
 export function interceptCheckoutIfCartEmpty() {
   document.addEventListener('click', function(e) {
-    // Only handle left click, not keyboard or right click
     if (e.target && e.target.classList.contains('checkout-link')) {
       let cart = JSON.parse(localStorage.getItem('so-cart')) || [];
       if (cart.length === 0) {
@@ -57,3 +52,34 @@ export function interceptCheckoutIfCartEmpty() {
     }
   }, true);
 }
+
+function handleSearchBar() {
+  const form = document.getElementById('product-search-form');
+  const input = document.getElementById('product-search-input');
+  if (form && input) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const query = input.value.trim();
+      if (query) {
+        window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
+      }
+    });
+  }
+}
+async function injectHeader() {
+  const headerDiv = document.getElementById('header');
+  if (headerDiv) {
+    try {
+      const res = await fetch('/public/partials/header.html');
+      if (res.ok) {
+        headerDiv.innerHTML = await res.text();
+      }
+    } catch (e) {
+    }
+  }
+}
+
+injectHeader().then(() => {
+  handleSearchBar();
+  updateCartCount();
+});
