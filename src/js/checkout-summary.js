@@ -1,10 +1,7 @@
 // checkout-summary.js
-// Handles checkout form validation and order summary rendering
-
 import CheckoutProcess from './CheckoutProcess.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Simple form validation
   const form = document.getElementById('checkout-form');
   if (form) {
     form.addEventListener('submit', async function(e) {
@@ -112,7 +109,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return `<tr><td>${item.Name || item.NameWithoutBrand || 'Item'}</td><td>${item.quantity || 1}</td><td>$${unitPrice.toFixed(2)}</td><td>$${total.toFixed(2)}</td></tr>`;
       }).join('');
     }
-    // Subtotal, discountedTotal, discountAmount (copy logic from cart-totals)
     let originalTotal = 0;
     let discountedTotal = 0;
     groupedItems.forEach(item => {
