@@ -1,7 +1,7 @@
 import { setLocalStorage } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 
-const dataSource = new ProductData("tents");
+const dataSource = new ExternalServices("tents");
 
 function addProductToCart(product) {
   // Retrieve the existing cart from localStorage
@@ -93,8 +93,8 @@ if (document.querySelector('.product-detail')) {
   const addToCartBtn = document.getElementById('addToCart');
   let productId = addToCartBtn ? addToCartBtn.dataset.id : null;
   if (productId) {
-    import('./ProductData.mjs').then(({ default: ProductData }) => {
-      const dataSource = new ProductData('tents');
+    import('./ExternalServices.mjs').then(({ default: ExternalServices }) => {
+      const dataSource = new ExternalServices('tents');
       dataSource.getData().then(products => {
         const product = products.find(p => p.Id === productId || p.Id === productId.toLowerCase());
         updateProductDetail(product);

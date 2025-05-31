@@ -1,4 +1,4 @@
-import ProductData from './ProductData.mjs';
+import ExternalServices from './ExternalServices.mjs';
 
 function formatPrice(price) {
   return `$${price.toFixed(2)}`;
@@ -8,7 +8,7 @@ async function getAllProducts() {
   const categories = ['tents', 'backpacks', 'sleeping-bags', 'hammocks'];
   let all = [];
   for (const cat of categories) {
-    const data = await new ProductData(cat).getData();
+    const data = await new ExternalServices(cat).getData();
     const items = (Array.isArray(data) ? data : data.Result || []).map(item => ({ ...item, _category: cat }));
     all = all.concat(items);
   }

@@ -1,4 +1,4 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import { triggerCartCountUpdate } from "../js/header.js";
 
 function getQueryParam(param) {
@@ -76,7 +76,7 @@ async function loadProductDetail() {
   const id = getQueryParam('id');
   const category = getQueryParam('category') || 'tents';
   if (!id) return;
-  const dataSource = new ProductData(category);
+  const dataSource = new ExternalServices(category);
   let products = await dataSource.getData();
   if (products.Result) products = products.Result;
   const product = products.find(item => String(item.Id).toLowerCase() === String(id).toLowerCase());

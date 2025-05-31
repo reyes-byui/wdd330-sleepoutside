@@ -1,4 +1,4 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 
 export function formatPrice(price) {
   return `$${price.toFixed(2)}`;
@@ -102,7 +102,7 @@ function renderProductList(products, category) {
 async function loadProductsForCategory() {
   const category = getCategoryFromUrl();
   document.getElementById('category-title').textContent = getCategoryTitle(category);
-  const dataSource = new ProductData(category);
+  const dataSource = new ExternalServices(category);
   let products = await dataSource.getData();
   if (products.Result) products = products.Result; // for backpacks
   renderProductList(products, category);
