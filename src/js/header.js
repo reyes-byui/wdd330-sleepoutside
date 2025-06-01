@@ -53,19 +53,27 @@ export function interceptCheckoutIfCartEmpty() {
   }, true);
 }
 
+// Add search bar logic for all pages
 function handleSearchBar() {
-  const form = document.getElementById('product-search-form');
-  const input = document.getElementById('product-search-input');
-  if (form && input) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const query = input.value.trim();
-      if (query) {
-        window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
-      }
-    });
-  }
+  // Wait for the header to be injected and the form to exist
+  const waitForForm = setInterval(() => {
+    const form = document.getElementById('product-search-form');
+    const input = document.getElementById('product-search-input');
+    if (form && input) {
+      clearInterval(waitForForm);
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const query = input.value.trim();
+        if (query) {
+          // Always use root-relative path for search page
+          window.location.href = '/search.html?q=' + encodeURIComponent(query);
+        }
+      });
+    }
+  }, 50);
 }
+
+// Inject header.html into #header on every page
 async function injectHeader() {
   const headerDiv = document.getElementById('header');
   if (headerDiv) {
@@ -75,6 +83,7 @@ async function injectHeader() {
         headerDiv.innerHTML = await res.text();
       }
     } catch (e) {
+      // fail silently
     }
   }
 }
