@@ -15,6 +15,7 @@ export default defineConfig({
         { src: 'css/style.css', dest: 'css' },
         { src: 'index.html', dest: '.' }, // Ensure index.html is copied to dist/
         { src: 'cart/index.html', dest: 'cart' }, // Ensure cart/index.html is copied to dist/
+        { src: 'search.html', dest: '.' }, // Ensure search.html is copied to dist/
       ]
     })
   ],
@@ -27,6 +28,7 @@ export default defineConfig({
         checkout: resolve(__dirname, "src/checkout/index.html"),
         product_pages: resolve(__dirname, "src/product_pages/index.html"),
         product_listing: resolve(__dirname, "src/product_listing/index.html"),
+        search: resolve(__dirname, "src/search.html"), // Add search.html as entry point
       },
     },
   },
