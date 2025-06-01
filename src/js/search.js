@@ -77,7 +77,8 @@ function renderResults(products) {
     card.addEventListener('click', () => {
       const id = card.getAttribute('data-id');
       const category = card.getAttribute('data-category');
-      window.location.href = `/product_pages/index.html?id=${id}&category=${category}`;
+      // Go to the product details page for the clicked product
+      window.location.href = "/product_pages/index.html?id=" + id + "&category=" + category;
     });
   });
 }
