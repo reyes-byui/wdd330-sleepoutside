@@ -9,6 +9,7 @@ export default defineConfig({
       targets: [
         { src: 'json', dest: '.' },
         { src: 'js/*.{js,mjs}', dest: 'js' },
+        { src: 'js/search.js', dest: 'js' }, // Ensure search.js is copied to dist/js
         { src: 'images', dest: '.' },
         { src: 'product_pages/*.html', dest: 'product_pages' }, 
         { src: 'public/partials/*', dest: 'partials' },
